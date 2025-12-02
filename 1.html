@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O que é JavaScript?</title>
+</head>
+<body>
+
+    <h1>O que é JavaScript?</h1>
+
+    <p>
+        <b>a)</b> O JavaScript foi criado para tornar as páginas mais interativas, permitindo ações que o HTML sozinho não faz.
+        Ele trouxe movimento e respostas rápidas dentro do navegador. <br><br>
+
+        <b>b)</b> A execução pode acontecer no navegador ou no servidor.  
+        No navegador, o código roda direto no dispositivo do usuário e responde rapidamente às ações na tela.  
+        No servidor, ele é processado em um ambiente separado e lida com informações e dados mais sensíveis. <br><br>
+
+        <b>c)</b> Os navegadores usam o sistema de sandbox, que é um espaço isolado onde o JavaScript funciona.
+        Isso evita que o código tenha acesso a partes internas do computador, deixando o uso mais seguro. <br><br>
+
+        <b>d)</b> Alguns objetos globais são o <i>document</i>, usado para mexer no HTML;
+        o <i>console</i>, que serve para exibir mensagens para o desenvolvedor;
+        e o <i>alert</i>, que mostra avisos na tela do usuário.
+    </p>
+
+    <p id="exemplo"></p>
+
+    <h2>Hora atual:</h2>
+    <p id="hora"></p>
+
+    <script>
+
+        console.log("Teste de console funcionando.");
+
+        alert("Olá! Bem-vindo(a).");
+
+        document.getElementById("exemplo").innerHTML = 
+        "Texto inserido usando JavaScript.";
+
+        function mostrarHora() {
+            const agora = new Date();
+            const horaFormatada = agora.toLocaleTimeString();
+            document.getElementById("hora").innerHTML = horaFormatada;
+        }
+
+        mostrarHora();
+
+    </script>
+
+</body>
+</html>

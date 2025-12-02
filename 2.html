@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 2</title>
+</head>
+<body>
+
+    <h1>Operadores / Variáveis</h1>
+
+    <button id="botao">Executar</button><br><br>
+
+    <h2>Tipos das Variáveis</h2>
+    <p id="pstring"></p>
+    <p id="pnumero"></p>
+    <p id="pboolean"></p>
+    <p id="pobjeto"></p>
+    <p id="parray"></p>
+    <p id="pundefined"></p>
+    <p id="pnull"></p>
+
+    <h2>Operações Entre Tipos</h2>
+    <p id="op1"></p>
+    <p id="op2"></p>
+    <p id="op3"></p>
+    <p id="op4"></p>
+
+    <script>
+        document.getElementById("botao").addEventListener("click", () => {
+
+            const texto = "Emily";
+            const numero = 15;
+            const booleano = true;
+            const objeto = { nome: "Emily", curso: "Info" };
+            const array = [1, 2, 3];
+            let indefinido;
+            const nulo = null;
+
+            document.getElementById("pstring").innerText = "String: " + typeof texto;
+            document.getElementById("pnumero").innerText = "Number: " + typeof numero;
+            document.getElementById("pboolean").innerText = "Boolean: " + typeof booleano;
+            document.getElementById("pobjeto").innerText = "Object: " + typeof objeto;
+            document.getElementById("parray").innerText = "Array: " + typeof array;
+            document.getElementById("pundefined").innerText = "Undefined: " + typeof indefinido;
+            document.getElementById("pnull").innerText = "Null: " + typeof nulo;
+
+            const op1 = texto + numero;
+            const op2 = booleano * numero;
+            const op3 = numero + nulo;
+            const op4 = numero + indefinido;
+
+            console.log(op1, op2, op3, op4);
+            document.getElementById("op1").innerText =
+                `"Emily" + 15 = ${op1}  (quando junta texto com número vira texto)`;
+            document.getElementById("op2").innerText =
+                `true * 15 = ${op2}  (true vira 1)`;
+            document.getElementById("op3").innerText =
+                `15 + null = ${op3}  (null vira 0)`;
+            document.getElementById("op4").innerText =
+                `15 + undefined = ${op4}  (undefined vira NaN)`;
+        });
+    </script>
+
+</body>
+</html>
