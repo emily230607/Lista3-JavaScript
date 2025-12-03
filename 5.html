@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 5</title>
+     <a href="index.html">Voltar</a>
+</head>
+
+<body>
+
+    <h1>Sorteio de Números</h1><br><br>
+
+    <div id="inputValores">
+
+    <label for="minimo">Escolher um mínimo:</label>
+    <input type="number" id="minimo"><br>
+    <label for="maximo">Escolher um máximo:</label>
+    <input type="number" id="maximo">
+    <button onclick="sortear()">Sortear</button><br><br>
+
+    </div>
+
+    <div id="outputResultados">
+    <h2>Resultado: </h2>
+    <p id="resultado"></p><br>
+    <h2>Lista de valores já sorteados:</h2>
+        <div class="historico">
+
+        </div>
+
+    </div>
+    
+</body>
+
+    <script>
+         const numSorteados = [];
+         let historico = document.querySelector(".historico")
+        function sortear(){
+
+            let valorMin = Number (minimo.value);
+            let valorMax = Number (maximo.value);
+
+             if (isNaN(valorMin) || isNaN(valorMax) || valorMin>=valorMax){
+                alert("Digite valores válidos")
+                return
+            }
+
+            let numeroAleatorio = Math.floor(Math.random() * (valorMax - valorMin + 1)) + valorMin;
+            console.log(numeroAleatorio);
+
+            resultado.innerHTML = numeroAleatorio
+            
+           let jaFoiSorteado = false
+           for(indice=0; indice<numSorteados.length; indice++){
+             if (numSorteados[indice].valor == numeroAleatorio){
+                jaFoiSorteado = true;
+                numSorteados[indice].vezes = numSorteados[indice].vezes+1
+             }
+           }
+           if(!jaFoiSorteado)
+             numSorteados.push({
+              valor:numeroAleatorio,
+              vezes:1
+           })
+           historico.innerHTML = ""
+           numSorteados.forEach( (e)=>{  historico.innerHTML+=e.valor + ", "}
+           )
+        }
+    </script>
+
+</html>

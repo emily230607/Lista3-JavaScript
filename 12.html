@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 12</title>
+     <a href="index.html">Voltar</a><br>
+</head>
+<body>
+  <input type="text" id="nameInput" placeholder="Digite seu nome">
+  <button id="saveButton">Salvar</button>
+  <p id="greeting"></p>
+</body>
+  <script>
+    const input = document.getElementById("nameInput");
+        const button = document.getElementById("saveButton");
+        const greeting = document.getElementById("greeting");
+        const nomeSalvo = localStorage.getItem("nome");
+        if (nomeSalvo) {
+            greeting.textContent = "Olá, " + nomeSalvo + "!";
+        }
+        button.addEventListener("click", function () {
+            const nome = input.value;
+            if (nome.trim() === "") {
+                alert("Digite um nome antes de salvar!");
+                return;
+            }
+            localStorage.setItem("nome", nome);
+            greeting.textContent = "Olá, " + nome + "!";
+        });
+  </script>
+</body>
+</html>

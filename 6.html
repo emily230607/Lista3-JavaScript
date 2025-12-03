@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercicio 6</title>
+         <a href="index.html">Voltar</a>
+    </head>
+    <body>
+
+    <h1>Números Primos em um Intervalo</h1><br><br>
+    
+        <input type="number" id="inicio"><br>
+        <input type="number" id="fim"><br>
+        <button onclick="ehPrimo()">
+            Verificar
+        </button>
+        <div id="resultadoPrimos"></div>
+    </body>
+    <script>
+    function ehPrimo() {
+        const inicio = parseInt(document.getElementById("inicio").value);
+        const fim = parseInt(document.getElementById("fim").value);
+        const resultado = document.getElementById("resultadoPrimos");
+        let numeros = [];
+
+        if(inicio <= fim) {
+            for (let i = inicio; i <= fim; i++){
+                if (i < 2) continue;
+                let primo = true;
+                for (let j = 2; j <= Math.sqrt(i); j++) {
+                    if (i % j === 0){
+                        primo = false;
+                        break;
+                    }
+                }
+                if (primo) {
+                    numeros.push(i);
+                }
+            }
+            resultado.textContent = numeros;
+        }
+    }
+</script>
+</html>

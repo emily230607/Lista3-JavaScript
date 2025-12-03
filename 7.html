@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 7</title>
+     <a href="index.html">Voltar</a>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+        }
+        input {
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <input type="text" placeholder="Insira uma palavra" id="palindrome-text">
+        <input type="button" value="Checar se a palavra palindromo" id="check-palindrome" >
+    </div>
+    <script>
+        const button = document.getElementById('check-palindrome')
+        button.addEventListener('click', () => {
+            const textElement = document.getElementById('palindrome-text')
+            const text = textElement.value
+            const isPalindrome = checkPalindrome(text)
+
+            if (isPalindrome) {
+                alert(`A palavra ${text} é palindromo`)
+            } else {
+                alert(`A palavra ${text} não é palindromo`)
+            }
+        })
+        function checkPalindrome(text) {
+            const reversedText = text.split('').reverse().join('')
+            return reversedText == text
+        }
+    </script>
+</body>
+</html>

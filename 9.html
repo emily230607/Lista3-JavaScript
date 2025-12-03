@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 9</title>
+     <a href="index.html">Voltar</a>
+    <style>
+        
+        #principal{
+            display: flex; 
+            width: 100%; 
+            height: 150px;
+        }
+
+        .bloco{
+            flex: 1; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pressione a tecla <strong>espaço</strong> para mudar as cores</h1>
+
+    <div id="principal">
+        <div class="bloco"></div>
+        <div class="bloco"></div>
+        <div class="bloco"></div>
+        <div class="bloco"></div>
+        <div class="bloco"></div>
+    </div>
+    <script>
+        function gerarCorAleatoria() {
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            return "#" +
+                r.toString(16).padStart(2, "0") +
+                g.toString(16).padStart(2, "0") +
+                b.toString(16).padStart(2, "0");
+        }
+        function alterarCores() {
+            const blocos = document.querySelectorAll(".bloco");
+            blocos.forEach(bloco => {
+                const novaCor = gerarCorAleatoria();
+                bloco.style.backgroundColor = novaCor;
+                bloco.textContent = novaCor.replace("#", "").toUpperCase();
+                bloco.style.color = getContrasteCor(novaCor);
+            });
+        }
+        function getContrasteCor(corHex) {
+            const r = parseInt(corHex.substr(1, 2), 16);
+            const g = parseInt(corHex.substr(3, 2), 16);
+            const b = parseInt(corHex.substr(5, 2), 16);
+            const brilho = (r * 0.299 + g * 0.587 + b * 0.114);
+            return brilho > 150 ? "#000000" : "#FFFFFF";
+        }
+        document.addEventListener("keydown", function (event) {
+            if (event.code === "Space") {
+                event.preventDefault();
+                alterarCores();
+            }
+        });
+        window.onload = alterarCores;
+    </script>
+</body>
+</html>

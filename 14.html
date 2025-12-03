@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 14</title>
+</head>
+<body>
+    <h1>Teclas do Teclado</h1>
+    <div id="saida"></div>
+    <script>
+        const saida = document.getElementById("saida");
+        let texto = "";
+        document.addEventListener("keydown", function (event) { 
+            console.log("tecla:", event.key, "| código:", event.code);
+            if (event.key === "Backspace") {
+                texto = texto.slice(0, -1);
+            } else if (event.key.length === 1) {
+                texto += event.key;
+            }
+            saida.textContent = texto + "  '" + event.code + "'";
+        });
+    </script>
+</body>
+</html>

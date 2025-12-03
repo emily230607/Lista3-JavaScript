@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 11</title>
+     <a href="index.html">Voltar</a><br>
+</head>
+<body>
+    <button id="alertButton">Clique aqui</button>
+    <input type="text" id="textInput" placeholder="Digite algo">
+    <div id="hoverDiv">Passe o mouse aqui</div>
+    <select id="colorSelect">
+        <option value="">Escolha uma cor</option>
+        <option value="orange">laranja</option>
+        <option value="pink">Rosa</rosa>
+        <option value="purple">Roxo</option>
+    </select>
+    <script>
+        const alertButton = document.getElementById("alertButton");
+        alertButton.addEventListener("click", function () {
+            alert("Você clicou no botão!");
+        });
+        const textInput = document.getElementById("textInput");
+        textInput.addEventListener("keydown", function (event) {
+            console.log("Tecla pressionada:", event.key);
+        });
+        textInput.addEventListener("focus", function () {
+            textInput.style.backgroundColor = "laranja";
+        });
+        textInput.addEventListener("blur", function () {
+            textInput.style.backgroundColor = "";
+        });
+        const hoverDiv = document.getElementById("hoverDiv");
+        hoverDiv.addEventListener("mouseover", function () {
+            hoverDiv.style.backgroundColor = "darkred";
+        });
+        hoverDiv.addEventListener("mouseout", function () {
+            hoverDiv.style.backgroundColor = "";
+        });
+        const colorSelect = document.getElementById("colorSelect");
+
+        colorSelect.addEventListener("change", function () {
+            const cor = colorSelect.value;
+            document.body.style.backgroundColor = cor || "";
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 10</title>
+     <a href="index.html">Voltar</a>
+</head>
+<body>
+    <div class="tela" id="tela">
+        <p id="formula"></p>
+        <h1 id="numero"></h1>
+    </div>
+    <div class="botoes">
+        <button class="but dig" id="dig1" onclick="adicionarNumero('1')">1</button>
+
+        <button class="but dig" id="dig2" onclick="adicionarNumero('2')">2</button>
+
+        <button class="but dig" id="dig3" onclick="adicionarNumero('3')">3</button>
+
+        <button class="but dig" id="dig4" onclick="adicionarNumero('4')">4</button>
+
+        <button class="but dig" id="dig5" onclick="adicionarNumero('5')">5</button>
+
+        <button class="but dig" id="dig6" onclick="adicionarNumero('6')">6</button>
+
+        <button class="but dig" id="dig7" onclick="adicionarNumero('7')">7</button>
+
+        <button class="but dig" id="dig8" onclick="adicionarNumero('8')">8</button>
+
+        <button class="but dig" id="dig9" onclick="adicionarNumero('9')">9</button>
+
+        <button class="but dig" id="dig0" onclick="adicionarNumero('0')">0</button>
+
+        <button class="but op" id="opsum" onclick="adicionarOperacao('+')">+</button>
+
+        <button class="but op" id="opsub" onclick="adicionarOperacao('-')">-</button>
+
+        <button class="but op" id="opmult" onclick="adicionarOperacao('*')">*</button>
+
+        <button class="but op" id="opdiv" onclick="adicionarOperacao('/')">/</button>
+
+        <button class="but op" id="opequal" onclick="resultado()">=</button>
+
+        <button class="but op" id="opAC" onclick="ac()">AC</button>
+
+    </div>
+    <script>
+        let numeroAnterior;
+        let numeroAtual="";
+        let operacaoAtual;
+        function adicionarNumero(numero){
+            numeroAtual += numero;
+            document.getElementById("numero").innerText += numero;
+        }
+        function adicionarOperacao(operacao){
+            operacaoAtual = operacao;
+            numeroAnterior = parseFloat(numeroAtual);           
+            numeroAtual = '';
+            document.getElementById("formula").innerText = numeroAnterior + operacao;
+            document.getElementById("numero").innerText = ' ';
+        }
+        function resultado(){
+            let resultado;
+            if(operacaoAtual==="+"){
+                resultado=numeroAnterior+parseFloat(numeroAtual);
+            }
+             if(operacaoAtual==="-"){
+                resultado=numeroAnterior-parseFloat(numeroAtual);
+            }
+             if(operacaoAtual==="*"){
+                resultado=numeroAnterior*parseFloat(numeroAtual);
+            }
+             if(operacaoAtual==="/"){
+                resultado=numeroAnterior/parseFloat(numeroAtual);
+            }
+             document.getElementById("formula").innerText = numeroAnterior.toString() + operacaoAtual+numeroAtual+"="+resultado;
+            document.getElementById("numero").innerText = ' ';
+        }
+        function ac(){
+         numeroAnterior="";
+        numeroAtual="";
+        operacaoAtual="";
+        document.getElementById("formula").innerText = "";
+        document.getElementById("numero").innerText = '';
+        }
+    </script>
+</body>
+</html>

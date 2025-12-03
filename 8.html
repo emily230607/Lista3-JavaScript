@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <a href="index.html">Voltar</a>
+</head>
+<body>
+
+    <button onclick="mudarCor()">Clique para mudar a cor de fundo</button>
+    <p id="corAtual"></p>
+
+    <script>
+        function gerarCor(){
+            const r = Math.floor(Math.random()*256)
+            const g = Math.floor(Math.random()*256)
+            const b = Math.floor(Math.random()*256)
+
+            return "rgb("+r+","+g+","+b+")"
+        }
+
+        function mudarCor(){
+            const cor = gerarCor();
+            document.body.style.backgroundColor = cor;
+            document.getElementById("corAtual").innerHTML="Cor atual: "+cor
+        }
+
+    </script>
+    
+</body>
+</html>
